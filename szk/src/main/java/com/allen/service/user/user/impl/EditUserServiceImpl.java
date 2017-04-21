@@ -20,9 +20,7 @@ public class EditUserServiceImpl implements EditUserService {
 
         User oldUser = userDao.findOne(user.getId());
         oldUser.setName(user.getName());
-        oldUser.setPhone(user.getPhone());
         oldUser.setState(user.getState());
-        oldUser.setRemark(user.getRemark());
         oldUser.setOperator(user.getOperator());
         oldUser.setOperateTime(user.getOperateTime());
         oldUser.setVersion(user.getVersion());

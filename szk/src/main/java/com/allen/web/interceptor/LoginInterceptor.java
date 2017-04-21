@@ -1,6 +1,7 @@
 package com.allen.web.interceptor;
 
 import com.allen.util.StringUtil;
+import com.allen.util.UserUtil;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,7 +38,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             if(url.lastIndexOf("/") == url.length()-1){
                 flag = true;
             }else {
-                String loginName = null == request.getSession().getAttribute("loginName") ? "" : request.getSession().getAttribute("loginName").toString();
+                String loginName = null == UserUtil.getLoginUserForLoginName(request) ? "" : UserUtil.getLoginUserForLoginName(request);
                 if (!StringUtil.isEmpty(loginName)) {
                     flag = true;
                 } else {

@@ -36,19 +36,18 @@ public class FindUserDao extends BaseQueryDao {
     }
 
     /**
-     * 通过登录名和密码查询用户
-     * @param loginName
-     * @param pwd
+     * 通过ZZ查询用户
+     * @param zz
      * @return
      * @throws Exception
      */
-    public User findByLoginNameAndPwd(String loginName, String pwd)throws Exception{
+    public User findByZz(String zz)throws Exception{
         String fields = "u";
         String[] tableNames = {"User u"};
         LinkedHashMap<String, Object> paramsMap = new LinkedHashMap<String, Object>();
-        paramsMap.put("loginName",loginName);
-        paramsMap.put("pwd",pwd);
+        paramsMap.put("zz",zz);
         paramsMap.put("state",new Object[]{0,">"});
+        paramsMap.put("type",new Object[]{2,"<"});
         return (User) super.findByHql(tableNames, fields, paramsMap, null, User.class);
     }
 }

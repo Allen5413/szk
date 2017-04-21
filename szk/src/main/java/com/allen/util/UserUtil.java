@@ -2,6 +2,7 @@ package com.allen.util;
 
 
 import com.allen.entity.basic.Resource;
+import com.allen.entity.user.User;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -32,8 +33,12 @@ public class UserUtil {
      * @return
      */
     public static String getLoginUserForLoginName(HttpServletRequest request){
-        if(null != request.getSession().getAttribute("loginName")){
-            return request.getSession().getAttribute("loginName").toString();
+        if(null != request.getSession().getAttribute("type")){
+            if(Integer.parseInt(request.getSession().getAttribute("type").toString()) == User.TYPE_STUDENT) {
+                return request.getSession().getAttribute("studentCode").toString();
+            }else{
+                return request.getSession().getAttribute("zz").toString();
+            }
         }else{
             return "";
         }
@@ -47,6 +52,19 @@ public class UserUtil {
     public static String getLoginUserForName(HttpServletRequest request){
         if(null != request.getSession().getAttribute("name")){
             return request.getSession().getAttribute("name").toString();
+        }else{
+            return "";
+        }
+    }
+
+    /**
+     * 获取登录用户的类型
+     * @param request
+     * @return
+     */
+    public static String getLoginUserForType(HttpServletRequest request){
+        if(null != request.getSession().getAttribute("type")){
+            return request.getSession().getAttribute("type").toString();
         }else{
             return "";
         }

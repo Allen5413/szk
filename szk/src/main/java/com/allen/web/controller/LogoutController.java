@@ -14,9 +14,11 @@ public class LogoutController{
 
     @RequestMapping(value = "logout")
     public void logout(HttpServletRequest request, HttpServletResponse response)throws Exception{
-        request.getSession().removeAttribute("loginName");
+        request.getSession().removeAttribute("zz");
+        request.getSession().removeAttribute("studentCode");
         request.getSession().removeAttribute("name");
         request.getSession().removeAttribute("userId");
+        request.getSession().removeAttribute("type");
         request.getSession().removeAttribute("menuMap");
         response.sendRedirect("/");
     }

@@ -18,7 +18,6 @@ public class AddUserServiceImpl implements AddUserService {
 
     @Override
     public void add(User user) throws Exception {
-        user.setPwd(MD5Util.MD5("123456"));
         userDao.save(user);
     }
 }

@@ -14,8 +14,8 @@ public class User {
     public static final int STATE_DISABLE = 2;    //停用
 
     public static final int TYPE_ADMIN = 0;     //管理员
-    public static final int TYPE_STUDENT = 1;   //学生
-    public static final int TYPE_TEACHER = 2;   //老师
+    public static final int TYPE_TEACHER = 1;   //老师
+    public static final int TYPE_STUDENT = 2;   //学生
 
     @Id
     @GeneratedValue
@@ -23,7 +23,7 @@ public class User {
     private String zz;                          //zz
     private String studentCode;                 //学号
     private String name;                        //姓名
-    private int type;                           //类型[0：管理员；1：学生；2：老师]
+    private int type;                           //类型[0：管理员；1：老师；2：学生]
     private Integer state;                      //用户状态
     private String creator;                     //创建人
     private Date createTime = new Date();       //创建时间

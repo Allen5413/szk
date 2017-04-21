@@ -17,21 +17,8 @@
            style="width:48px;height:48px;border-radius:50px; float: left; margin: 12px 10px 0 0;">
       <h4 class="pf-user-name ellipsis">${name}</h4>
       <i class="iconfont xiala" style="top: 2px;">&#xe607;</i>
-
       <div class="pf-user-panel">
         <ul class="pf-user-opt">
-          <li>
-            <a href="javascript:;">
-              <i class="iconfont">&#xe60d;</i>
-              <span class="pf-opt-name">用户信息</span>
-            </a>
-          </li>
-          <li class="pf-modify-pwd">
-            <a href="#" onclick="openEditPwd()">
-              <i class="iconfont">&#xe634;</i>
-              <span class="pf-opt-name">修改密码</span>
-            </a>
-          </li>
           <li class="pf-logout">
             <a href="${pageContext.request.contextPath}/logout.html">
               <i class="iconfont">&#xe60e;</i>
@@ -41,7 +28,6 @@
         </ul>
       </div>
     </div>
-
   </div>
 
   <div id="pf-bd">

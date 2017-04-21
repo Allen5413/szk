@@ -17,25 +17,16 @@
   });
 
   function sub(){
-    var loginName = $.trim($("#loginName").val());
-    var pwd = $.trim($("#pwd").val());
-    if(loginName == ""){
+    var zz = $.trim($("#zz").val());
+    if(zz == ""){
       $("#msg").show();
-      $("#msg").html("<i class='iconfont'>&#xe62e;&nbsp;&nbsp;&nbsp;&nbsp;</i>请输入账号");
-    }
-    else if(pwd == ""){
-      $("#msg").show();
-      $("#msg").html("<i class='iconfont'>&#xe62e;&nbsp;&nbsp;&nbsp;&nbsp;</i>请输入密码");
-    }else{
-      var params = {
-        "loginName":loginName,
-        "pwd":pwd
-      };
+      $("#msg").html("<i class='iconfont'>&#xe62e;&nbsp;&nbsp;&nbsp;&nbsp;</i>请输入ZZ号");
+    } else{
       $.ajax({
         url:"${pageContext.request.contextPath}/login.json",
         method : 'POST',
         async:false,
-        data:params,
+        data:{"zz":zz},
         success:function(data){
           if(data.state == "0"){
             location.href = "${pageContext.request.contextPath}/openIndex.html";
@@ -69,11 +60,7 @@
           <form>
             <div class="lg-username input-item clearfix">
               <i class="iconfont">&#xe60d;</i>
-              <input type="text" id="loginName" name="loginName" placeholder="账号">
-            </div>
-            <div class="lg-password input-item clearfix">
-              <i class="iconfont">&#xe634;</i>
-              <input type="password" id="pwd" name="pwd" placeholder="请输入密码">
+              <input type="text" id="zz" name="zz" placeholder="ZZ号">
             </div>
             <div class="enter">
               <a href="javascript:;" class="purchaser" onClick="sub();">登录</a>

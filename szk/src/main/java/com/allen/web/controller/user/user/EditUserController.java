@@ -2,10 +2,8 @@ package com.allen.web.controller.user.user;
 
 import com.alibaba.fastjson.JSONObject;
 import com.allen.entity.user.User;
-import com.allen.service.user.user.EditUserPwdService;
 import com.allen.service.user.user.EditUserService;
 import com.allen.service.user.user.FindUserByIdService;
-import com.allen.util.UserUtil;
 import com.allen.web.controller.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
