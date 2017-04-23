@@ -17,7 +17,7 @@ public class FindUserPageServiceImpl implements FindUserPageService {
     private FindUserDao findUserDao;
 
     @Override
-    public PageInfo find(PageInfo pageInfo, String name, Integer state) throws Exception {
-        return findUserDao.findPage(pageInfo, name, state);
+    public PageInfo find(PageInfo pageInfo, String name, Integer state, Integer type) throws Exception {
+        return findUserDao.findPage(pageInfo, name, state, type);
     }
 }

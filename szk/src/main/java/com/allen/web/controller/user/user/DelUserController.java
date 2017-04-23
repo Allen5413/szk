@@ -1,10 +1,7 @@
 package com.allen.web.controller.user.user;
 
 import com.alibaba.fastjson.JSONObject;
-import com.allen.entity.user.User;
 import com.allen.service.user.user.DelUserByIdService;
-import com.allen.service.user.user.EditUserService;
-import com.allen.service.user.user.FindUserByIdService;
 import com.allen.web.controller.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by Allen on 2015/5/25.

@@ -28,6 +28,9 @@ public class StringUtil {
     }
 
     public static void main(String[] args) {
-        System.out.println(StringUtil.haoAddOne_2("313"));
+
+        String str = "wwewe#@#dfdfdf#@#dfdfd#@#dfdfd";
+        String[] s = str.split("#@#");
+        System.out.println(s.length+"      sdsdsd@@@");
     }
 }

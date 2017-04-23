@@ -39,6 +39,7 @@ public class GlobalDefaultExceptionHandler {
         }
         jsonObject.put("state", 1);
         jsonObject.put("msg", eMsg);
+        req.setAttribute("errorMsg", eMsg);
         return jsonObject;
     }
 }

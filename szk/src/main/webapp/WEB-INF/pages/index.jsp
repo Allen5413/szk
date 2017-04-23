@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-  <%@ include file="common/meta2.jsp"%>
-  <%@ include file="common/taglibs2.jsp"%>
+  <%@ include file="common/meta.jsp"%>
+  <%@ include file="common/taglibs.jsp"%>
 </head>
 <body>
 <div class="container">
@@ -49,7 +49,7 @@
             <ul class="sider-nav-s" style="margin-top: 0px;">
               <c:forEach var="resource" items="${menu.value}" varStatus="status2">
                 <c:if test="${resource.isButton==1}">
-                  <li onclick="app.addTab('${pageContext.request.contextPath}${resource.url}?resourceId=${resource.id}', '${resource.name}', ${status.index}, ${status2.index}, 0)"><a href="#">${resource.name}</a></li>
+                  <li onclick="app.addTab('${pageContext.request.contextPath}${resource.url}?resourceId=${resource.id}', '${resource.name}')"><a href="#">${resource.name}</a></li>
                 </c:if>
               </c:forEach>
             </ul>

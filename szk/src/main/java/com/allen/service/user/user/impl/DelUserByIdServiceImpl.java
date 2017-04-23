@@ -1,9 +1,7 @@
 package com.allen.service.user.user.impl;
 
 import com.allen.dao.user.user.UserDao;
-import com.allen.entity.user.User;
 import com.allen.service.user.user.DelUserByIdService;
-import com.allen.util.DateUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

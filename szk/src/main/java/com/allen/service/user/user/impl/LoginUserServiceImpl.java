@@ -17,8 +17,13 @@ public class LoginUserServiceImpl implements LoginUserService {
     private FindUserDao findUserDao;
 
     @Override
-    public User login(String zz) throws Exception {
+    public User loginByZz(String zz) throws Exception {
         User user = findUserDao.findByZz(zz);
         return user;
+    }
+
+    @Override
+    public User loginByStudentCode(String studentCode) throws Exception {
+        return findUserDao.findByStudentCode(studentCode);
     }
 }

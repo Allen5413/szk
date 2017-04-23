@@ -2,11 +2,14 @@ package com.allen.web.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.allen.base.exception.BusinessException;
+import com.allen.dao.PageInfo;
 import com.allen.entity.basic.Menu;
 import com.allen.entity.basic.Resource;
+import com.allen.entity.teachplan.TeachPlan;
 import com.allen.entity.user.User;
 import com.allen.service.basic.menu.FindMenuByIdService;
 import com.allen.service.basic.resource.FindResourceByUserIdService;
+import com.allen.service.teachplan.teachplan.FindTeachPlanPageService;
 import com.allen.service.user.user.LoginUserService;
 import com.allen.util.DateUtil;
 import com.allen.util.UserUtil;
@@ -27,7 +30,7 @@ import java.util.Map;
  * Created by Allen on 2016/12/12.
  */
 @Controller
-public class LoginController {
+public class LoginController extends BaseController{
 
     @javax.annotation.Resource
     private LoginUserService loginUserService;
@@ -35,19 +38,49 @@ public class LoginController {
     private FindResourceByUserIdService findResourceByUserIdService;
     @javax.annotation.Resource
     private FindMenuByIdService findMenuByIdService;
+    @javax.annotation.Resource
+    private FindTeachPlanPageService findTeachPlanPageService;
 
     @RequestMapping("/")
     public String login(){
-        return "/login";
+        return "/student/login";
     }
-
     @RequestMapping("/login")
     @ResponseBody
-    public JSONObject userLogin(@RequestParam("zz")String zz,
-                            HttpServletRequest request,
-                            HttpServletResponse response)throws Exception{
+    public JSONObject userLogin(@RequestParam("studentCode")String studentCode,
+                                HttpServletRequest request,
+                                HttpServletResponse response)throws Exception{
         JSONObject jsonObject = new JSONObject();
-        User user = loginUserService.login(zz);
+        User user = loginUserService.loginByStudentCode(studentCode);
+        if(null != user){
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("studentId", user.getId()+"");
+            params.put("state", TeachPlan.STATE_DOING+"");
+            PageInfo pageInfo = super.getPageInfo(request);
+            pageInfo = findTeachPlanPageService.find(pageInfo, params);
+            if(null == pageInfo.getPageResults() || 1 > pageInfo.getPageResults().size()){
+                throw new BusinessException("目前没有你的教学计划");
+            }
+            this.setSession(request, user);
+            jsonObject.put("state", 0);
+            //response.sendRedirect(request.getContextPath()+"/openIndex.html");
+        }else{
+            throw new BusinessException("学号不存在");
+        }
+        return jsonObject;
+    }
+
+    @RequestMapping("/loginAdmin")
+    public String loginAdmin(){
+        return "/loginAdmin";
+    }
+    @RequestMapping("/adminLogin")
+    @ResponseBody
+    public JSONObject adminLogin(@RequestParam("zz")String zz,
+                                HttpServletRequest request,
+                                HttpServletResponse response)throws Exception{
+        JSONObject jsonObject = new JSONObject();
+        User user = loginUserService.loginByZz(zz);
         if(null != user){
             this.setSession(request, user);
             jsonObject.put("state", 0);

@@ -8,6 +8,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
 /**
  * 验证用户是否登录拦截器
  * Created by Allen on 2016/12/9.
@@ -15,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginInterceptor implements HandlerInterceptor {
 
     //不需要拦截的路径
-    private static final String[] IGNORE_URI = {"/login", "/css"};
+    private static final String[] IGNORE_URI = {"/login", "/adminLogin", "/css", "/jsp/controller"};
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

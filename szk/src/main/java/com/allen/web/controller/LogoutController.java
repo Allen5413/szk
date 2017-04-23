@@ -20,6 +20,6 @@ public class LogoutController{
         request.getSession().removeAttribute("userId");
         request.getSession().removeAttribute("type");
         request.getSession().removeAttribute("menuMap");
-        response.sendRedirect("/");
+        response.sendRedirect("/loginAdmin");
     }
 }
