@@ -53,8 +53,8 @@ public class AddObjectiveItemServiceImpl implements AddObjectiveItemService {
         //记录题目的答案
         if(null != answers && 0 < answers.length){
             for (String answer : answers){
-                String answerStr = answer.split("_")[0];
-                String flag = answer.split("_")[1];
+                String answerStr = answer.split("@#@")[0];
+                String flag = answer.split("@#@")[1];
                 ObjectiveItemAnswer objectiveItemAnswer = new ObjectiveItemAnswer();
                 objectiveItemAnswer.setObjectiveItemId(objectiveItem.getId());
                 objectiveItemAnswer.setAnswer(answerStr);

@@ -121,7 +121,7 @@
         if(1 < i){
           answers += "#@#";
         }
-        answers += answer+"_"+isAnswer;
+        answers += answer+"@#@"+isAnswer;
         if(isAnswer == 1){
           isHaveAnswer++;
         }

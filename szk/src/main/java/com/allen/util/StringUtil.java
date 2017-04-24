@@ -18,6 +18,20 @@ public class StringUtil {
             }
         }
     }
+
+    /**
+     * 把转义后的html标签换成转义前的
+     * @param str
+     * @return
+     */
+    public static String encodeHtml(String str){
+        str = str.replace("&lt;", "<");
+        str = str.replace("&nbsp;", " ");
+        str = str.replace("&quot;", "\"");
+        str = str.replace("&gt;", ">");
+        return str;
+    }
+
     private static final String STR_FORMAT = "00000000";
 
     public static String haoAddOne_2(String liuShuiHao){

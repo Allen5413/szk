@@ -1,5 +1,7 @@
 package com.allen.entity.resources;
 
+import com.allen.util.StringUtil;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -43,7 +45,7 @@ public class ObjectiveItemAnswer {
     }
 
     public String getAnswer() {
-        return answer;
+        return StringUtil.encodeHtml(answer);
     }
 
     public void setAnswer(String answer) {

@@ -1,5 +1,7 @@
 package com.allen.entity.resources;
 
+import com.allen.util.StringUtil;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -70,7 +72,7 @@ public class ObjectiveItem {
     }
 
     public String getReference() {
-        return reference;
+        return StringUtil.encodeHtml(reference);
     }
 
     public void setReference(String reference) {
