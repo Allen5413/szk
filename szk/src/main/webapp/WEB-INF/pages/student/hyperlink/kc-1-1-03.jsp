@@ -9,7 +9,7 @@
 <header>
 	<div class="header w">
 		<p class="tit">三民主义</p>
-		<a href="#" onclick="history.go(-1);" class="close icon"></a>
+		<a href="javascript:history.go(-1);return false;" class="close icon"></a>
 	</div>
 </header>
 <section class="pm-top-40">
