@@ -47,9 +47,14 @@
 <script>
   function setBtn(value, flag, id){
     var html = (value == 0 ? '未设置' : '已设置');
+    html += "&nbsp;&nbsp;<a href='#' onclick='";
     if(0 == flag) {
-      html += "&nbsp;&nbsp;<a href='#' onclick='setOi("+id+")'><span class='am-icon-edit'></span></a>";
+      html += "setOi("+id+")";
     }
+    if(1 == flag) {
+      html += "setResources("+id+")";
+    }
+    html += "'><span class='am-icon-edit'></span></a>";
     return html;
   }
 
@@ -66,6 +71,24 @@
               return;
           }
           app.add("${pageContext.request.contextPath}/setTeachPlanSubjectOi/set.json", $('#addForm').serialize(), index, "", function(){
+              $("#search_subject_page_table").datagrid("reload");
+          });
+      });
+  }
+
+  function setResources(id){
+      app.openDialog("${pageContext.request.contextPath}/setTeachPlanSubjectResources/open.html?id="+id, "课堂讨论设置", 1000, 700, function(index){
+          var beginTime = $("#add_beginTime").val().trim();
+          var endTime = $("#add_endTime").val().trim();
+          if(beginTime == ""){
+              app.msg("请选择开始时间", 1);
+              return;
+          }
+          if(endTime == ""){
+              app.msg("请选择结束时间", 1);
+              return;
+          }
+          app.add("${pageContext.request.contextPath}/setTeachPlanSubjectResources/set.json", $('#addForm').serialize(), index, "", function(){
               $("#search_subject_page_table").datagrid("reload");
           });
       });

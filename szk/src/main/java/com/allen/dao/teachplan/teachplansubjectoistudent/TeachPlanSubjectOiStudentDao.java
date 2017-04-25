@@ -1,6 +1,8 @@
 package com.allen.dao.teachplan.teachplansubjectoistudent;
 
 import com.allen.entity.teachplan.TeachPlanSubjectOiStudent;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -35,4 +37,14 @@ public interface TeachPlanSubjectOiStudentDao extends CrudRepository<TeachPlanSu
      * @throws Exception
      */
     public List<TeachPlanSubjectOiStudent> findByTpsoiId(long tpsoiId)throws Exception;
+
+    /**
+     * 删除一道题下面学生的答题记录
+     * @param oiId
+     * @throws Exception
+     */
+    @Modifying
+    @Query(nativeQuery = true, value = "delete t2 from teach_plan_subject_oi_student t2, teach_plan_subject_oi t3 " +
+            "where t2.tpsoi_id = t3.id and t3.objective_item_id = ?1")
+    public void delByOiId(long oiId)throws Exception;
 }

@@ -60,9 +60,7 @@
 
     <div id="pf-page">
       <div id="tab" class="easyui-tabs1" style="width:100%;height:100%;">
-        <div title="首页" style="padding:10px 5px 5px 10px;">
-          首页
-        </div>
+        <div title="首页" style="padding:10px 5px 5px 10px;">首页</div>
       </div>
     </div>
   </div>
@@ -70,10 +68,10 @@
   <div id="pf-ft">
     <div class="system-name">
       <i class="iconfont">&#xe6fe;</i>
-      <span>信息管理系统&nbsp;v1.0</span>
+      <span>思政课管理后台&nbsp;v1.0</span>
     </div>
     <div class="copyright-name">
-      <span>CopyRight&nbsp;2017&nbsp;&nbsp;Allen&nbsp;版权所有</span>
+      <span>Copyright 2009 至善在线教育网 版权所有 渝ICP备06004276号</span>
       <i class="iconfont" >&#xe6ff;</i>
     </div>
   </div>

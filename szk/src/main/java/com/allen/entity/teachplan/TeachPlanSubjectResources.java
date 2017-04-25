@@ -7,20 +7,21 @@ import javax.persistence.Table;
 import java.util.Date;
 
 /**
- * 教学计划的专题关联的客观题
+ * 教学计划的专题关联的资源
  * Created by Allen on 2017/4/22 0022.
  */
 @Entity
-@Table(name = "teach_plan_subject_oi")
-public class TeachPlanSubjectOi {
+@Table(name = "teach_plan_subject_resources")
+public class TeachPlanSubjectResources {
 
     @Id
     @GeneratedValue
     private long id;
     private long teachPlanSubjectId;
-    private long objectiveItemId;
+    private long resourcesId;
     private String operator;                    //操作人
     private Date operateTime = new Date();      //操作时间
+
 
     public long getId() {
         return id;
@@ -38,6 +39,14 @@ public class TeachPlanSubjectOi {
         this.teachPlanSubjectId = teachPlanSubjectId;
     }
 
+    public long getResourcesId() {
+        return resourcesId;
+    }
+
+    public void setResourcesId(long resourcesId) {
+        this.resourcesId = resourcesId;
+    }
+
     public String getOperator() {
         return operator;
     }
@@ -52,13 +61,5 @@ public class TeachPlanSubjectOi {
 
     public void setOperateTime(Date operateTime) {
         this.operateTime = operateTime;
-    }
-
-    public long getObjectiveItemId() {
-        return objectiveItemId;
-    }
-
-    public void setObjectiveItemId(long objectiveItemId) {
-        this.objectiveItemId = objectiveItemId;
     }
 }
