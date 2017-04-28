@@ -16,7 +16,7 @@ public interface TeachPlanSubjectOiStudentAnswerDao extends CrudRepository<Teach
      * @throws Exception
      */
     @Modifying
-    @Query(nativeQuery = true, value = "delete t from teach_plan_subject_oi_student_answer t, teach_plan_subject_oi_student t2, teach_plan_subject_oi t3\n" +
+    @Query(nativeQuery = true, value = "delete t from teach_plan_subject_oi_student_answer t, teach_plan_subject_oi_student t2, teach_plan_subject_oi t3 " +
             "where t.tpsois_id = t2.id and t2.tpsoi_id = t3.id and t3.objective_item_id = ?1")
     public void delByOiId(long oiId)throws Exception;
 }

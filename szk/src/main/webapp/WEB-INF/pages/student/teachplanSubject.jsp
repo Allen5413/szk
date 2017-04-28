@@ -23,8 +23,7 @@
         <ul>
           <li><a href="${pageContext.request.contextPath}/doKgt/open.html?tpsId=${teachPlanSubject.id}&teachPlanId=${param.teachPlanId}">第一环节 前置学习（前测）</a></li>
           <li><a href="${pageContext.request.contextPath}/doZy/open.html?tpsId=${teachPlanSubject.id}&teachPlanId=${param.teachPlanId}">第二环节 参与课堂讨论（资源包支持）</a></li>
-          <li><a href="${pageContext.request.contextPath}/doZgt/open.html?tpsId=${teachPlanSubject.id}&teachPlanId=${param.teachPlanId}">第三环节 学习巩固与内化（后测）</a></li>
-          <li><a href="${pageContext.request.contextPath}/doHp/open.html?tpsId=${teachPlanSubject.id}&teachPlanId=${param.teachPlanId}">第四环节 教师总结并布置课后作业（提升）</a></li>
+          <li><a href="${pageContext.request.contextPath}/doZgt/open.html?tpsId=${teachPlanSubject.id}&teachPlanId=${param.teachPlanId}">第三环节 学习巩固与内化（后测与提升）</a></li>
         </ul>
       </dd>
     </dl>

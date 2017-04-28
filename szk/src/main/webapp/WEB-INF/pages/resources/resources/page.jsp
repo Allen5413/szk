@@ -46,22 +46,9 @@
          loadMsg="数据加载中......">
     <thead>
     <tr>
-      <th field="name" width="35%">资源名称</th>
-      <th field="type" width="6%" data-options="formatter:function(value){if(value == 0){
-                                                                            return '单选';
-                                                                          }
-                                                                          else if(value == 1){
-                                                                            return '多选';
-                                                                          }else{
-                                                                            return '不定项';
-                                                                          }}">类型</th>
-      <th field="labelNames" width="18%">标签</th>
-      <th field="state" width="6%" data-options="formatter:function(value){if(value == 0){
-                                                                            return '正常';
-                                                                          }else{
-                                                                            return '关闭';
-                                                                          }}">状态</th>
-      <th field="creator" width="6%">上传者</th>
+      <th field="name" width="40%">资源名称</th>
+      <th field="labelNames" width="20%">标签</th>
+      <th field="creator" width="10%">上传者</th>
       <th field="createTime" width="15%" data-options="formatter:function(value){return app.formatDateValue(value, 1, 6);}">上传时间</th>
       <th field="operate" width="15%" data-options="formatter:function(value, row, index){return app.formatString($('#teachresources_page_operate').html(), row.id);}">操作</th>
     </tr>
