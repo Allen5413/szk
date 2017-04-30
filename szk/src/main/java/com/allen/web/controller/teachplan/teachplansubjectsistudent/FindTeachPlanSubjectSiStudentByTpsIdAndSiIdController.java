@@ -1,6 +1,8 @@
 package com.allen.web.controller.teachplan.teachplansubjectsistudent;
 
 import com.alibaba.fastjson.JSONObject;
+import com.allen.entity.teachplan.TeachPlanSubjectSiStudent;
+import com.allen.service.teachplan.teachplansubjectsistudent.FindTeachPlanSubjectSiStudentByIdService;
 import com.allen.service.teachplan.teachplansubjectsistudent.FindTeachPlanSubjectSiStudentByTpssiIdService;
 import com.allen.web.controller.BaseController;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,8 @@ public class FindTeachPlanSubjectSiStudentByTpsIdAndSiIdController extends BaseC
 
     @Resource
     private FindTeachPlanSubjectSiStudentByTpssiIdService findTeachPlanSubjectSiStudentByTpssiIdService;
+    @Resource
+    private FindTeachPlanSubjectSiStudentByIdService findTeachPlanSubjectSiStudentByIdService;
 
     @RequestMapping(value = "open")
     public String open() throws Exception {
@@ -29,7 +33,9 @@ public class FindTeachPlanSubjectSiStudentByTpsIdAndSiIdController extends BaseC
     }
 
     @RequestMapping(value = "searchContent")
-    public String searchContent() throws Exception {
+    public String searchContent(@RequestParam("id") long id, HttpServletRequest request) throws Exception {
+        TeachPlanSubjectSiStudent teachPlanSubjectSiStudent = findTeachPlanSubjectSiStudentByIdService.find(id);
+        request.setAttribute("teachPlanSubjectSiStudent", teachPlanSubjectSiStudent);
         return "/teachplan/teachplanSubjectSi/searchContentAnswer";
     }
 

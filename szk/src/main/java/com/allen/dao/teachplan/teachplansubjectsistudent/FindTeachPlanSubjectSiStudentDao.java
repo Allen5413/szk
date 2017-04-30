@@ -20,7 +20,7 @@ public class FindTeachPlanSubjectSiStudentDao extends BaseQueryDao{
      * @throws Exception
      */
     public List<Map> findByTpssiId(long tpssiId)throws Exception{
-        String sql = "select u.student_code, u.name, t.time_str , t.answer ";
+        String sql = "select u.student_code, u.name, t.id, t.time_str , t.answer ";
         sql += "from teach_plan_subject_si_student t, user u ";
         sql += "where t.user_id = u.id ";
         sql += "and t.tpssi_id = ? ";

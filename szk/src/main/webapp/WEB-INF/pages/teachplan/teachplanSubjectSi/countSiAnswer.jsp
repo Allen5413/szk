@@ -22,10 +22,10 @@
   $("#count_answer_table").datagrid({url:"${pageContext.request.contextPath}/findTpssisByTpsIdAndSiIdController/find.json?tpssiId=${param.tpssiId}"});
 
   function searchContentTdHtml(value, id){
-      return "<a href=\"#\" onclick=\"searchContent('"+value+"')\">"+value.substring(0,40)+"...</a>";
+      return "<a href=\"#\" onclick=\"searchContent("+id+")\">"+value.substring(0,40)+"...</a>";
   }
 
-  function searchContent(content){
-    app.openOneBtnDialog("${pageContext.request.contextPath}/findTpssisByTpsIdAndSiIdController/searchContent.html?content="+content, "查看答题内容", 1000, 700);
+  function searchContent(id){
+    app.openOneBtnDialog("${pageContext.request.contextPath}/findTpssisByTpsIdAndSiIdController/searchContent.html?id="+id, "查看答题内容", 1000, 700);
   }
 </script>

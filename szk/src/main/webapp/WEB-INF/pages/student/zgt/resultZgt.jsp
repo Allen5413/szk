@@ -26,7 +26,7 @@
         <div class="text">
           <h5>回答问题：</h5>
           <div class="text-input">
-            ${studentAnswer.answer}
+            ${studentAnswer}
           </div>
         </div>
       </dd>

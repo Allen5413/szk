@@ -2,10 +2,12 @@ package com.allen.web.controller.student;
 
 import com.alibaba.fastjson.JSONObject;
 import com.allen.entity.resources.SubjectiveItem;
+import com.allen.entity.resources.SubjectiveItemAnswer;
 import com.allen.entity.teachplan.TeachPlanSubjectSi;
 import com.allen.entity.teachplan.TeachPlanSubjectSiStudent;
 import com.allen.entity.teachplan.TeachPlanSubjectSiStudentAnswer;
 import com.allen.service.resources.subjectiveitem.FindSubjectiveItemByIdService;
+import com.allen.service.resources.subjectiveitemanswer.FindSubjectiveItemAnswerBySiIdService;
 import com.allen.service.teachplan.teachplansubjectsi.FindTeachPlanSubjectSiByTpsIdAndSIdService;
 import com.allen.service.teachplan.teachplansubjectsi.FindTeachPlanSubjectSiByTpsIdAndStudentIdService;
 import com.allen.service.teachplan.teachplansubjectsistudent.AddTeachPlanSubjectSiStudentService;
@@ -42,6 +44,8 @@ public class DoZgtController extends BaseController {
     private FindTeachPlanSubjectSiStudentByTpssiIdAndStudentIdService findTeachPlanSubjectSiStudentByTpssiIdAndStudentIdService;
     @Resource
     private FindTeachPlanSubjectSiStudentAnswerByTpssisIdService findTeachPlanSubjectSiStudentAnswerByTpssisIdService;
+    @Resource
+    private FindSubjectiveItemAnswerBySiIdService findSubjectiveItemAnswerBySiIdService;
 
     @RequestMapping(value = "open")
     public String open(HttpServletRequest request, @RequestParam("tpsId")long tpsId) throws Exception {
@@ -80,16 +84,15 @@ public class DoZgtController extends BaseController {
             timeStr += minute + "分钟";
             timeStr += 0 == second ? "" : second + "秒";
             request.setAttribute("timeStr", timeStr);
-        }else{
-            //查看已提交答案
-            SubjectiveItem subjectiveItem = (SubjectiveItem) ((JSONObject)findSubjectiveItemByIdService.find(siId)).get("subjectiveItem");
-            TeachPlanSubjectSi teachPlanSubjectSi = findTeachPlanSubjectSiByTpsIdAndSIdService.find(tpsId, siId);
-            TeachPlanSubjectSiStudent teachPlanSubjectSiStudent = findTeachPlanSubjectSiStudentByTpssiIdAndStudentIdService.find(teachPlanSubjectSi.getId(), UserUtil.getLoginUserForLoginId(request));
-            TeachPlanSubjectSiStudentAnswer teachPlanSubjectSiStudentAnswer = findTeachPlanSubjectSiStudentAnswerByTpssisIdService.find(teachPlanSubjectSiStudent.getId());
-            request.setAttribute("si", subjectiveItem);
-            request.setAttribute("studentAnswer", teachPlanSubjectSiStudent);
-            request.setAttribute("answer", teachPlanSubjectSiStudentAnswer);
         }
+
+        SubjectiveItem subjectiveItem = (SubjectiveItem) ((JSONObject)findSubjectiveItemByIdService.find(siId)).get("subjectiveItem");
+        TeachPlanSubjectSi teachPlanSubjectSi = findTeachPlanSubjectSiByTpsIdAndSIdService.find(tpsId, siId);
+        TeachPlanSubjectSiStudent teachPlanSubjectSiStudent = findTeachPlanSubjectSiStudentByTpssiIdAndStudentIdService.find(teachPlanSubjectSi.getId(), UserUtil.getLoginUserForLoginId(request));
+        TeachPlanSubjectSiStudentAnswer teachPlanSubjectSiStudentAnswer = findTeachPlanSubjectSiStudentAnswerByTpssisIdService.find(teachPlanSubjectSiStudent.getId());
+        request.setAttribute("si", subjectiveItem);
+        request.setAttribute("studentAnswer", teachPlanSubjectSiStudent.getAnswer());
+        request.setAttribute("answer", teachPlanSubjectSiStudentAnswer);
 
         //找到下一题的id
         List<Map> list = findTeachPlanSubjectSiByTpsIdAndStudentIdService.find(tpsId, UserUtil.getLoginUserForLoginId(request));
