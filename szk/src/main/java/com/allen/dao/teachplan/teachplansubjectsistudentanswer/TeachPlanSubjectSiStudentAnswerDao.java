@@ -10,6 +10,8 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface TeachPlanSubjectSiStudentAnswerDao extends CrudRepository<TeachPlanSubjectSiStudentAnswer, Long> {
 
+    public TeachPlanSubjectSiStudentAnswer findByTpssisId(long tpssisId)throws Exception;
+
     /**
      * 删除一道题下面学生的答题点评记录
      * @param siId

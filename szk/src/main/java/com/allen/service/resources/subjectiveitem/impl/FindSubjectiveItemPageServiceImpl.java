@@ -1,7 +1,7 @@
 package com.allen.service.resources.subjectiveitem.impl;
 
 import com.allen.dao.PageInfo;
-import com.allen.dao.resources.objectiveitem.FindSubjectiveItemDao;
+import com.allen.dao.resources.subjectiveitem.FindSubjectiveItemDao;
 import com.allen.service.resources.subjectiveitem.FindSubjectiveItemPageService;
 import org.springframework.stereotype.Service;
 

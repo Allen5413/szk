@@ -26,17 +26,12 @@
           <div class="flex-cel">
             <div class="tm-ig">第${status.index+1}题</div>
             <div class="cl-txt">
-              <c:if test="${empty data.is_right}">
-                <a class="btn" href="${pageContext.request.contextPath}/doZgt/doing.html?tpsId=${param.tpsId}&oiId=${data.subjective_item_id}&sort=${status.index+1}&teachPlanId=${param.teachPlanId}">开始答题</a>
+              <c:if test="${empty data.time}">
+                <a class="btn" href="${pageContext.request.contextPath}/doZgt/doing.html?tpsId=${param.tpsId}&siId=${data.subjective_item_id}&sort=${status.index+1}&teachPlanId=${param.teachPlanId}&flag=0">开始答题</a>
               </c:if>
-              <c:if test="${!empty data.is_right}">
-                <c:if test="${'0' eq data.is_right}">
-                  <span class="red">回答错误</span>
-                </c:if>
-                <c:if test="${'1' eq data.is_right}">
-                  <span class="green">回答正确</span>
-                </c:if>
+              <c:if test="${0 < data.time}">
                 ${data.time_str}
+                <a class="btn" href="${pageContext.request.contextPath}/doZgt/subAnswer.html?tpsId=${param.tpsId}&siId=${data.subjective_item_id}&sort=${status.index+1}&teachPlanId=${param.teachPlanId}&flag=1">查看答案</a>
               </c:if>
             </div>
           </div>

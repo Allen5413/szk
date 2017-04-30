@@ -20,6 +20,7 @@ public class TeachPlanSubjectSiStudent {
     private long id;                            //id
     private long tpssiId;                       //专题关联题目id
     private long userId;                        //学生id
+    private String answer;                      //学生提交的答案
     private long time;                          //答题耗时[存毫秒值]
     private String timeStr;                     //答题耗时[存分钟数]
     private String operator;                    //操作人
@@ -79,5 +80,13 @@ public class TeachPlanSubjectSiStudent {
 
     public void setTimeStr(String timeStr) {
         this.timeStr = timeStr;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 }

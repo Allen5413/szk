@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
@@ -16,11 +17,21 @@ import java.util.Map;
  * Created by Allen on 2017/4/23 0023.
  */
 @Controller
-@RequestMapping(value = "/findTpsoisByTpsIdAndSiIdController")
+@RequestMapping(value = "/findTpssisByTpsIdAndSiIdController")
 public class FindTeachPlanSubjectSiStudentByTpsIdAndSiIdController extends BaseController {
 
     @Resource
     private FindTeachPlanSubjectSiStudentByTpssiIdService findTeachPlanSubjectSiStudentByTpssiIdService;
+
+    @RequestMapping(value = "open")
+    public String open() throws Exception {
+        return "/teachplan/teachplanSubjectSi/countSiAnswer";
+    }
+
+    @RequestMapping(value = "searchContent")
+    public String searchContent() throws Exception {
+        return "/teachplan/teachplanSubjectSi/searchContentAnswer";
+    }
 
     @RequestMapping(value = "find")
     @ResponseBody

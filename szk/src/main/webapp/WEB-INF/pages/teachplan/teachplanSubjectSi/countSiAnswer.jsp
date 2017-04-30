@@ -11,12 +11,21 @@
        loadMsg="数据加载中......">
   <thead>
   <tr>
-    <th field="student_code" width="20%">学号</th>
-    <th field="name" width="50%">姓名</th>
-    <th field="time_str" width="20%">答题用时</th>
+    <th field="student_code" width="10%">学号</th>
+    <th field="name" width="10%">姓名</th>
+    <th field="answer" width="65%" data-options="formatter:function(value, row, index){return searchContentTdHtml(value, row.id);}">答题内容</th>
+    <th field="time_str" width="15%">答题用时</th>
   </tr>
   </thead>
 </table>
 <script>
-  $("#count_answer_table").datagrid({url:"${pageContext.request.contextPath}/findTpsoisByTpsIdAndOiIdController/find.json?tpsoiId="+tpsoiId});
+  $("#count_answer_table").datagrid({url:"${pageContext.request.contextPath}/findTpssisByTpsIdAndSiIdController/find.json?tpssiId=${param.tpssiId}"});
+
+  function searchContentTdHtml(value, id){
+      return "<a href=\"#\" onclick=\"searchContent('"+value+"')\">"+value.substring(0,40)+"...</a>";
+  }
+
+  function searchContent(content){
+    app.openOneBtnDialog("${pageContext.request.contextPath}/findTpssisByTpsIdAndSiIdController/searchContent.html?content="+content, "查看答题内容", 1000, 700);
+  }
 </script>

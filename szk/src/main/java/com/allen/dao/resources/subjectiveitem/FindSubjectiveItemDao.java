@@ -1,4 +1,4 @@
-package com.allen.dao.resources.objectiveitem;
+package com.allen.dao.resources.subjectiveitem;
 
 import com.allen.dao.BaseQueryDao;
 import com.allen.dao.PageInfo;

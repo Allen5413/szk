@@ -82,6 +82,6 @@
   }
 
   function review(tpssiId){
-    app.openOneBtnDialog("${pageContext.request.contextPath}/findTpsoisByTpsIdAndOiIdController/find.html?tpssiId="+tpssiId, "评阅", 1000, 700);
+    app.openOneBtnDialog("${pageContext.request.contextPath}/findTpssisByTpsIdAndSiIdController/open.html?tpssiId="+tpssiId, "评阅", 1000, 700);
   }
 </script>
