@@ -29,4 +29,14 @@ public class FindTeachResourcesByIdController extends BaseController {
         request.setAttribute("teachResources", teachResources);
         return "/resources/resources/info";
     }
+
+    /**
+     * @return
+     */
+    @RequestMapping(value = "findLink")
+    public String findLink(HttpServletRequest request, @RequestParam("id")long id)throws Exception{
+        TeachResources teachResources = findTeachResourcesByIdService.find(id);
+        request.setAttribute("teachResources", teachResources);
+        return "/student/zy/zyLink";
+    }
 }

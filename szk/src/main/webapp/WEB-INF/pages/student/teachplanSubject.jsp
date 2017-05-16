@@ -8,7 +8,7 @@
 <body>
 <header>
   <div class="header w">
-    <p class="tit" style="text-align:center;">中国近代史纲要B</p>
+    <p class="tit" style="text-align:center;">马克思主义基本原理概论</p>
     <a href="javascript:history.go(-1);" class="back icon"></a>
   </div>
 </header>

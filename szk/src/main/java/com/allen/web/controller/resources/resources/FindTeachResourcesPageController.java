@@ -34,11 +34,13 @@ public class FindTeachResourcesPageController extends BaseController {
     @ResponseBody
     public JSONObject find(@RequestParam(value="name", required=false) String name,
                            @RequestParam(value="label", required=false) String label,
+                           @RequestParam(value="isLink", required=false) Integer isLink,
                            HttpServletRequest request) throws Exception {
         JSONObject json = new JSONObject();
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("name", new Object[]{StringUtil.isEmpty(name) ? "" : "%"+name+"%","like"});
         params.put("labelStr", new Object[]{StringUtil.isEmpty(label) ? "" : "%"+label+"%","like"});
+        params.put("isLink", isLink);
         Map<String, Boolean> sortMap = super.getSortInfo(request);
         PageInfo pageInfo = super.getPageInfo(request);
         pageInfo = findTeachResourcesPageService.find(pageInfo, params, sortMap);

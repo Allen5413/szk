@@ -16,4 +16,12 @@
     <div class="am-u-sm-3 am-text-right"><label >标签：</label></div>
     <div class="am-u-sm-8" style="float: left">${teachResources.labelNames}</div>
   </div>
+
+  <div class="am-g am-margin-top">
+    <div class="am-u-sm-3 am-text-right"><label >超链接：</label></div>
+    <div class="am-u-sm-8" style="float: left">
+      <c:if test="${'0' eq teachResources.isLink}">否</c:if>
+      <c:if test="${'1' eq teachResources.isLink}">是</c:if>
+    </div>
+  </div>
 </form>

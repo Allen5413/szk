@@ -25,5 +25,5 @@
 </div>
 <%@ include file="../../common/loadGrid.jsp"%>
 <script>
-  $("#addResources_findResources_page_table").datagrid({url:"${pageContext.request.contextPath}/findTeachResourcesPage/find.json?page=1&rows=99999"});
+  $("#addResources_findResources_page_table").datagrid({url:"${pageContext.request.contextPath}/findTeachResourcesPage/find.json?isLink=0&page=1&rows=99999"});
 </script>

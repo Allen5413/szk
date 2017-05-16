@@ -18,6 +18,15 @@
           <td width="14%" style="text-align: left"><input type="text" name="name" style="height: 28px;" value="${param.name}" /></td>
           <td width="10%" style="text-align: right"><span class="con-span">标签：</span></td>
           <td width="14%" style="text-align: left"><input type="text" name="lable" style="height: 28px;" value="${param.lable}" /></td>
+          <td width="10%" style="text-align: right"><span class="con-span">超链接：</span></td>
+          <td width="14%" style="text-align: left">
+            <select lang="amaze_select" id="teachplan_page_state" name="isLink" data-am-selected="{maxHeight: 500}" onchange="app.changeSelect(this)">
+              <option value=""></option>
+              <option value="null">全部</option>
+              <option value="0" <c:if test="${param.isLink eq '0'}">selected="selected" </c:if> >否</option>
+              <option value="1" <c:if test="${param.isLink eq '1'}">selected="selected" </c:if> >是</option>
+            </select>
+          </td>
           <td style="text-align: left">
             <c:if test="${isShowFindBtn}">
               <div class="opt-buttons" style="padding-left: 20px;">
@@ -46,11 +55,13 @@
          loadMsg="数据加载中......">
     <thead>
     <tr>
-      <th field="name" width="40%">资源名称</th>
+      <th field="name" width="30%">资源名称</th>
       <th field="labelNames" width="20%">标签</th>
-      <th field="creator" width="10%">上传者</th>
-      <th field="createTime" width="15%" data-options="formatter:function(value){return app.formatDateValue(value, 1, 6);}">上传时间</th>
-      <th field="operate" width="15%" data-options="formatter:function(value, row, index){return app.formatString($('#teachresources_page_operate').html(), row.id);}">操作</th>
+      <th field="isLink" width="4%" data-options="formatter:function(value){return 0 == value ? '否' : '是';}">超链接</th>
+      <th field="url" width="18%" data-options="formatter:function(value, row){return '${pageContext.request.contextPath}/findTeachResourcesById/findLink.html?id='+row.id;}">URL</th>
+      <th field="creator" width="6%">上传者</th>
+      <th field="createTime" width="10%" data-options="formatter:function(value){return app.formatDateValue(value, 1, 6);}">上传时间</th>
+      <th field="operate" width="12%" data-options="formatter:function(value, row, index){return app.formatString($('#teachresources_page_operate').html(), row.id);}">操作</th>
     </tr>
     </thead>
   </table>
@@ -74,6 +85,7 @@
 </div>
 <%@ include file="../../common/loadGrid.jsp"%>
 <script>
+  app.initAmazeSelect();
   function addTeachResources(){
     app.openDialog("${pageContext.request.contextPath}/addTeachResources/open.html", "添加客观题", 1000, 700, function(index){
       var name = $("#add_name").val().trim();

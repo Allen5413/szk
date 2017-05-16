@@ -56,6 +56,21 @@
     </div>
     <div class="am-u-sm-5"></div>
   </div>
+
+  <div class="am-g am-margin-top">
+    <div class="am-u-sm-3 am-text-right"><label >超链接：</label></div>
+    <div class="am-u-sm-4">
+      <div class="am-form-group">
+        <label class="am-radio-inline">
+          <input type="radio" name="isLink" value="0" checked> 否
+        </label>
+        <label class="am-radio-inline">
+          <input type="radio" name="isLink" value="1" > 是
+        </label>
+      </div>
+    </div>
+    <div class="am-u-sm-5"></div>
+  </div>
 </form>
 <script>
   function addLabel(){

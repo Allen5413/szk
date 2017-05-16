@@ -14,6 +14,9 @@ import java.util.Date;
 @Table(name = "teach_resources")
 public class TeachResources {
 
+    public static final int ISLINK_NOT = 0;
+    public static final int ISLINK_YES = 1;
+
     @Id
     @GeneratedValue
     private long id;                            //id
@@ -21,6 +24,7 @@ public class TeachResources {
     private String content;                     //内容
     private String labelIds;                    //标签id组合
     private String labelNames;                  //标签名称组合
+    private int isLink;                          //是否超链接
     private String remark;                      //备注
     private String creator;                     //创建人
     private Date createTime = new Date();       //创建时间
@@ -105,5 +109,13 @@ public class TeachResources {
 
     public void setOperateTime(Date operateTime) {
         this.operateTime = operateTime;
+    }
+
+    public int getIsLink() {
+        return isLink;
+    }
+
+    public void setIsLink(int isLink) {
+        this.isLink = isLink;
     }
 }
