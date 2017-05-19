@@ -32,7 +32,7 @@ public class ObjectiveItem {
     private String reference;                   //参考资源
     private String labelIds;                    //标签id组合
     private String labelNames;                  //标签名称组合
-    private int state;                          //状态[0：正常；1：关闭]
+    private Integer state;                      //状态[0：正常；1：关闭]
     private String remark;                      //备注
     private String creator;                     //创建人
     private Date createTime = new Date();       //创建时间
@@ -135,11 +135,11 @@ public class ObjectiveItem {
         this.labelNames = labelNames;
     }
 
-    public int getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(int state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 }

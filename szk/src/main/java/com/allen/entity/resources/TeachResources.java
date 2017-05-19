@@ -1,5 +1,7 @@
 package com.allen.entity.resources;
 
+import com.allen.util.StringUtil;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -48,7 +50,7 @@ public class TeachResources {
     }
 
     public String getContent() {
-        return content;
+        return StringUtil.encodeHtml(content);
     }
 
     public void setContent(String content) {
