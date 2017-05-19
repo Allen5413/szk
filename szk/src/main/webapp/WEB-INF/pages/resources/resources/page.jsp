@@ -76,7 +76,7 @@
   <!-- 每行的操作按钮 -->
   <div id="teachresources_page_operate" style="display: none;">
     <c:if test="${isShowFindBtn}">
-      <a class="am-badge am-badge-secondary am-radius am-text-xs" onClick="findTeachResourcesInfo('{0}')"><span class="am-icon-th-list"></span> 查看</a>
+      <a class="am-badge am-badge-secondary am-radius am-text-xs" onClick="editTeachResources('{0}')"><span class="am-icon-edit"></span> 编辑</a>
     </c:if>
     <c:if test="${isShowDelBtn}">
       <a class="am-badge am-badge-danger am-radius am-text-xs" onClick="delTeachResources('{0}')"><span class="am-icon-trash-o"></span> 删除</a>
@@ -114,8 +114,32 @@
     });
   }
 
-  function findTeachResourcesInfo(id){
-    app.openOneBtnDialog('${pageContext.request.contextPath}/findTeachResourcesById/find.html?id='+id, '查看', 1000, 700);
+  function editTeachResources(id){
+    app.openDialog('${pageContext.request.contextPath}/editTeachResources/open.html?id='+id, '编辑', 1000, 700, function(index){
+      var name = $("#edit_name").val().trim();
+      var content = UE.getEditor('edit_teachresources_reference').getContent();
+      var labels = "";
+
+      $("[name=labels_cb]").each(function(){
+        if($(this).is(":checked")){
+          labels += $(this).val()+",";
+        }
+      });
+
+      if(name == ""){
+        app.msg("请输入资源名称", 1);
+        return;
+      }
+      if(content == ""){
+        app.msg("请输入资源内容", 1);
+        return;
+      }
+
+      if(0 < labels.length) {
+        $("#labels").val(labels.substring(0, labels.length-1));
+      }
+      app.add("${pageContext.request.contextPath}/editTeachResources/editor.json", $('#editForm').serialize(), index, "teachresources");
+    });
   }
 
   function delTeachResources(id){

@@ -2,57 +2,37 @@
          pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <form class="am-form" id="editForm" name="editForm" method="post">
-  <input type="hidden" name="id" value="${subjectiveItem.id}" />
-  <input type="hidden" id="answers" name="answers" />
+  <input type="hidden" name="id" value="${teachResources.id}" />
   <input type="hidden" id="labels" name="labels" />
   <div class="am-g am-margin-top">
-    <div class="am-u-sm-3 am-text-right"><label >题目：</label></div>
+    <div class="am-u-sm-3 am-text-right"><label >标题：</label></div>
     <div class="am-u-sm-4">
-      <input class="am-input-sm" type="text" placeholder="输入题目" required id="edit_name" name="name" value="${subjectiveItem.name}"  />
+      <input class="am-input-sm" type="text" placeholder="输入标题" required id="edit_name" name="name" value="${teachResources.name}" />
     </div>
     <div class="am-u-sm-5">*必填，不可重复</div>
   </div>
-
   <div class="am-g am-margin-top">
-    <div class="am-u-sm-3 am-text-right"><label >资源参考：</label></div>
+    <div class="am-u-sm-3 am-text-right"><label >内容：</label></div>
     <div class="am-u-sm-4">
-      <div id="edit_reference_div" style="display: none;">${subjectiveItem.reference}</div>
+      <div id="content" style="display: none;">${teachResources.content}</div>
       <!-- 加载编辑器的容器 -->
-      <script id="edit_subjectiveitem_reference" name="reference" type="text/plain"></script>
+      <script id="edit_teachresources_reference" name="content" type="text/plain"></script>
       <!-- 配置文件 -->
       <script type="text/javascript" src="${pageContext.request.contextPath}/ueditor1_4_3_3-utf8-jsp/ueditor.config.js"></script>
       <!-- 编辑器源码文件 -->
       <script type="text/javascript" src="${pageContext.request.contextPath}/ueditor1_4_3_3-utf8-jsp/ueditor.all.js"></script>
       <!-- 实例化编辑器 -->
       <script type="text/javascript">
-        var ue = UE.getEditor('edit_subjectiveitem_reference');
+        <%--var content = "${teachResources.content}";--%>
+        var ue = UE.getEditor('edit_teachresources_reference');
         //判断ueditor 编辑器是否创建成功
         ue.addListener("ready", function () {
           // editor准备好之后才可以使用
-          ue.setContent($("#edit_reference_div").html(), false);
+          ue.setContent($("#content").html(), false);
         });
       </script>
     </div>
-    <div class="am-u-sm-5"></div>
-  </div>
-
-  <div class="am-g am-margin-top">
-    <div class="am-u-sm-3 am-text-right"><label >讨论要点：</label></div>
-    <div class="am-u-sm-8">
-      <div id="answer" style="display: none;">${answer.answer}</div>
-      <!-- 加载编辑器的容器 -->
-      <textarea id="edit_answer"></textarea>
-      <!-- 实例化编辑器 -->
-      <script type="text/javascript">
-        var ue2 = UE.getEditor('edit_answer');
-        //判断ueditor 编辑器是否创建成功
-        ue2.addListener("ready", function () {
-          // editor准备好之后才可以使用
-          ue2.setContent($("#answer").html(), false);
-        });
-      </script>
-    </div>
-    <div class="am-u-sm-2">*必填</div>
+    <div class="am-u-sm-5">*必填</div>
   </div>
 
   <div class="am-g am-margin-top">
@@ -83,17 +63,31 @@
     </div>
     <div class="am-u-sm-5"></div>
   </div>
+
+  <div class="am-g am-margin-top">
+    <div class="am-u-sm-3 am-text-right"><label >超链接：</label></div>
+    <div class="am-u-sm-4">
+      <div class="am-form-group">
+        <label class="am-radio-inline">
+          <input type="radio" name="isLink" value="0" <c:if test="${'0' eq teachResources.isLink}">checked="" </c:if> > 否
+        </label>
+        <label class="am-radio-inline">
+          <input type="radio" name="isLink" value="1" <c:if test="${'1' eq teachResources.isLink}">checked="" </c:if> > 是
+        </label>
+      </div>
+    </div>
+    <div class="am-u-sm-5"></div>
+  </div>
 </form>
 <script>
-
-  var changeLabels = "${subjectiveItem.labelIds}";
+  var changeLabels = "${teachResources.labelIds}";
   var changeLabelArray = changeLabels.split(",");
-  if(0 < changeLabelArray.length){
-    for(var i=0; i<changeLabelArray.length; i++){
+  if(0 < changeLabelArray.length) {
+    for (var i = 0; i < changeLabelArray.length; i++) {
       var changeLabelId = changeLabelArray[i];
-      $("[name=labels_cb]").each(function(){
+      $("[name=labels_cb]").each(function () {
         var value = $(this).val();
-        if(value.split("_")[0] == changeLabelId){
+        if (value.split("_")[0] == changeLabelId) {
           $(this).attr("checked", true);
         }
       });
