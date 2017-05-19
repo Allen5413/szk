@@ -15,7 +15,7 @@
 <section class="pm-top-40">
   <div class="auto w bg-f news-text-info">
     <div class="xx-intro">
-      ${teachResources.content}
+      ${teachResources.contentHtml}
     </div>
   </div>
 </section>

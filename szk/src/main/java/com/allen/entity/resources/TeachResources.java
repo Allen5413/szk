@@ -2,10 +2,7 @@ package com.allen.entity.resources;
 
 import com.allen.util.StringUtil;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -32,6 +29,8 @@ public class TeachResources {
     private Date createTime = new Date();       //创建时间
     private String operator;                    //操作人
     private Date operateTime = new Date();      //操作时间
+    @Transient
+    private String contentHtml;
 
     public long getId() {
         return id;
@@ -49,9 +48,7 @@ public class TeachResources {
         this.name = name;
     }
 
-    public String getContent() {
-        return StringUtil.encodeHtml(content);
-    }
+    public String getContent() {return content;}
 
     public void setContent(String content) {
         this.content = content;
@@ -119,5 +116,9 @@ public class TeachResources {
 
     public void setIsLink(int isLink) {
         this.isLink = isLink;
+    }
+
+    public String getContentHtml() {
+        return StringUtil.encodeHtml(this.getContent());
     }
 }
