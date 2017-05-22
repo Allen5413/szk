@@ -17,7 +17,7 @@
   <div class="auto w kc-tm-list">
     <div class="intro">
       <div class="title">习题说明</div>
-      <p>1.	该部分共两道习题，均为主观题；</p>
+      <p>1.	该部分共五道习题，均为主观题；</p>
       <p>2.	请同学们认真作答，系统将自动保存记录。</p>
     </div>
     <ul class="list-tm">

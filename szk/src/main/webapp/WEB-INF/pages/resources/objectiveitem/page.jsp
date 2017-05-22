@@ -84,7 +84,7 @@
   <!-- 每行的操作按钮 -->
   <div id="objectiveitem_page_operate" style="display: none;">
     <c:if test="${isShowFindBtn}">
-      <a class="am-badge am-badge-secondary am-radius am-text-xs" onClick="findObjectiveItemInfo('{0}')"><span class="am-icon-th-list"></span> 查看</a>
+      <a class="am-badge am-badge-secondary am-radius am-text-xs" onClick="editObjectiveItemInfo('{0}')"><span class="am-icon-edit"></span> 修改</a>
     </c:if>
     <c:if test="${isShowEditBtn}">
       <a class="am-badge am-badge-danger am-radius am-text-xs" onClick="editObjectiveItem('{0}', 1)"><span class="am-icon-edit"></span> 关闭</a>
@@ -95,7 +95,7 @@
   </div>
   <div id="objectiveitem_page_operate2" style="display: none;">
     <c:if test="${isShowFindBtn}">
-      <a class="am-badge am-badge-secondary am-radius am-text-xs" onClick="findObjectiveItemInfo('{0}')"><span class="am-icon-th-list"></span> 查看</a>
+      <a class="am-badge am-badge-secondary am-radius am-text-xs" onClick="editObjectiveItemInfo('{0}')"><span class="am-icon-edit"></span> 修改</a>
     </c:if>
     <c:if test="${isShowEditBtn}">
       <a class="am-badge am-badge-danger am-radius am-text-xs" onClick="editObjectiveItem('{0}', 0)"><span class="am-icon-edit"></span> 恢复</a>
@@ -155,8 +155,52 @@
     });
   }
 
-  function findObjectiveItemInfo(id){
-    app.openOneBtnDialog('${pageContext.request.contextPath}/findObjectiveItemById/find.html?id='+id, '查看', 1000, 700);
+  function editObjectiveItemInfo(id){
+    app.openDialog('${pageContext.request.contextPath}/editObjectiveItem/open.html?id='+id, '修改', 1000, 700, function(index){
+      var name = $("#edit_name").val().trim();
+      var type = $('input:radio[name="type"]:checked').val();
+      var selectCount = $('input:radio[name="selectCount"]:checked').val();
+      var answers = "";
+      var isHaveAnswer = 0;
+      var labels = "";
+      for(var i=1; i<=selectCount; i++){
+        var isAnswer = ($('#add_answer_cb'+i).is(":checked")) ? 1 : 0;
+        var answer = UE.getEditor('add_answer'+i).getContent();
+        if(1 < i){
+          answers += "#@#";
+        }
+        answers += answer+"@#@"+isAnswer;
+        if(isAnswer == 1){
+          isHaveAnswer++;
+        }
+      }
+
+      $("[name=labels_cb]").each(function(){
+        if($(this).is(":checked")){
+          labels += $(this).val()+",";
+        }
+      });
+
+      if(name == ""){
+        app.msg("请输入题目名称", 1);
+        return;
+      }
+      if(0 == isHaveAnswer){
+        app.msg("请至少选择一个正确答案", 1);
+        return;
+      }
+      if(0 == type && 1 < isHaveAnswer){
+        app.msg("当前为单选题，只能选择一个正确答案", 1);
+        return;
+      }
+
+      $("#reference").val(UE.getEditor('edit_objectiveitem_reference').getContent());
+      $("#answers").val(answers);
+      if(0 < labels.length) {
+        $("#labels").val(labels.substring(0, labels.length-1));
+      }
+      app.edit("${pageContext.request.contextPath}/editObjectiveItem/editor.json", $('#editForm').serialize(), index, "objectiveitem");
+    });
   }
 
   function editObjectiveItem(id, state){

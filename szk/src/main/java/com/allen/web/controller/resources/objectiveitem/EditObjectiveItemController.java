@@ -2,6 +2,7 @@ package com.allen.web.controller.resources.objectiveitem;
 
 import com.alibaba.fastjson.JSONObject;
 import com.allen.entity.resources.ObjectiveItem;
+import com.allen.entity.resources.ObjectiveItemAnswer;
 import com.allen.service.resources.label.FindLabelForAllService;
 import com.allen.service.resources.objectiveitem.EditObjectiveItemService;
 import com.allen.service.resources.objectiveitem.FindObjectiveItemByIdService;
@@ -37,8 +38,13 @@ public class EditObjectiveItemController extends BaseController {
     @RequestMapping(value = "open")
     public String open(HttpServletRequest request, @RequestParam("id")long id)throws Exception{
         JSONObject json = findObjectiveItemByIdService.find(id);
+        List<ObjectiveItemAnswer> answerList = (List)json.get("oiaList");
+        if(null != answerList && 0 < answerList.size()){
+            for(int i=0; i<answerList.size(); i++){
+                request.setAttribute("answer"+(i+1), answerList.get(i));
+            }
+        }
         request.setAttribute("objectiveItem", json.get("objectiveItem"));
-        request.setAttribute("answerList", null== json.get("oiaList") ? "" : ((List)json.get("oiaList")).get(0));
         request.setAttribute("labelList", findLabelForAllService.find());
         return "/resources/objectiveitem/edit";
     }
@@ -51,11 +57,10 @@ public class EditObjectiveItemController extends BaseController {
     @ResponseBody
     public JSONObject editor(HttpServletRequest request,
                           ObjectiveItem objectiveItem,
-                          @RequestParam("newAnswers")String newAnswers,
-                          @RequestParam(value = "delAnswerIds", required = false)String delAnswerIds,
+                          @RequestParam("answers")String answers,
                           @RequestParam(value = "labels", required = false)String labels) throws Exception {
         JSONObject jsonObject = new JSONObject();
-        editObjectiveItemService.edit(objectiveItem, StringUtil.isEmpty(labels) ? null : labels.split(","), delAnswerIds, newAnswers.split("#@#"), UserUtil.getLoginUserForName(request));
+        editObjectiveItemService.edit(objectiveItem, StringUtil.isEmpty(labels) ? null : labels.split(","), answers.split("#@#"), UserUtil.getLoginUserForName(request));
         jsonObject.put("state", 0);
         return jsonObject;
     }
