@@ -7,7 +7,6 @@ import org.hibernate.transform.Transformers;
 import org.springframework.util.Assert;
 
 import javax.persistence.Query;
-import java.math.BigInteger;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

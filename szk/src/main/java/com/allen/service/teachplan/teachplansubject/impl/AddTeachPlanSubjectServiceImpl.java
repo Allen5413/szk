@@ -20,10 +20,10 @@ public class AddTeachPlanSubjectServiceImpl implements AddTeachPlanSubjectServic
 
     @Override
     public void add(String loginName, TeachPlanSubject teachPlanSubject) throws Exception {
-        TeachPlanSubject teachPlanSubject2 = teachPlanSubjectDao.findByName(teachPlanSubject.getName());
-        if(null != teachPlanSubject2 && !StringUtil.isEmpty(teachPlanSubject2.getName())){
-            throw new BusinessException("专题名称："+teachPlanSubject.getName()+"，已经存在！");
-        }
+//        TeachPlanSubject teachPlanSubject2 = teachPlanSubjectDao.findByName(teachPlanSubject.getName());
+//        if(null != teachPlanSubject2 && !StringUtil.isEmpty(teachPlanSubject2.getName())){
+//            throw new BusinessException("专题名称："+teachPlanSubject.getName()+"，已经存在！");
+//        }
         teachPlanSubject.setState(TeachPlanSubject.STATE_OPEN);
         teachPlanSubject.setSubjectiveState(TeachPlanSubject.SUBJECTIVESTATE_NOT);
         teachPlanSubject.setObjectiveState(TeachPlanSubject.OBJECTIVESTATE_NOT);

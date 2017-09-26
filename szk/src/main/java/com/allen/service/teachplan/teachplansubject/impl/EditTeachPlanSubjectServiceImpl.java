@@ -19,11 +19,11 @@ public class EditTeachPlanSubjectServiceImpl implements EditTeachPlanSubjectServ
     private TeachPlanSubjectDao teachPlanSubjectDao;
 
     public void edit(TeachPlanSubject teachPlanSubject, String loginName)throws Exception{
-        TeachPlanSubject oldTeachPlanSubject = teachPlanSubjectDao.findByName(teachPlanSubject.getName());
-        if(null != oldTeachPlanSubject && oldTeachPlanSubject.getId() != teachPlanSubject.getId()){
-            throw new BusinessException("专题名称已存在！");
-        }
-        oldTeachPlanSubject = teachPlanSubjectDao.findOne(teachPlanSubject.getId());
+//        TeachPlanSubject oldTeachPlanSubject = teachPlanSubjectDao.findByName(teachPlanSubject.getName());
+//        if(null != oldTeachPlanSubject && oldTeachPlanSubject.getId() != teachPlanSubject.getId()){
+//            throw new BusinessException("专题名称已存在！");
+//        }
+        TeachPlanSubject oldTeachPlanSubject = teachPlanSubjectDao.findOne(teachPlanSubject.getId());
         oldTeachPlanSubject.setName(teachPlanSubject.getName());
         oldTeachPlanSubject.setState(teachPlanSubject.getState());
         oldTeachPlanSubject.setSubjectiveState(teachPlanSubject.getSubjectiveState());
