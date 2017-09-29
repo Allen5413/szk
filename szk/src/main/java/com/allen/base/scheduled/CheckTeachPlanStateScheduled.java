@@ -14,7 +14,11 @@ public class CheckTeachPlanStateScheduled {
     @Autowired
     private CloseTeachPlanSerivce closeTeachPlanSerivce;
 
-    @Scheduled(cron = "0 55 10 * * ?")
+    /**
+     * 凌晨1点执行，检查教学计划，满足条件的就关闭
+     * @throws Exception
+     */
+    @Scheduled(cron = "0 00 01 * * ?")
     public void check() throws Exception{
         closeTeachPlanSerivce.colseAll();
     }
