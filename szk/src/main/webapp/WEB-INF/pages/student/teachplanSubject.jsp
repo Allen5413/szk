@@ -8,15 +8,15 @@
 <body>
 <header>
   <div class="header w">
-    <%--<p class="tit" style="text-align:center;">马克思主义基本原理概论</p>--%>
-    <p class="tit" style="text-align:center;">中国近现代史纲要</p>
+    <p class="tit" style="text-align:center;">马克思主义基本原理概论</p>
+    <%--<p class="tit" style="text-align:center;">中国近现代史纲要</p>--%>
     <a href="javascript:history.go(-1);" class="back icon"></a>
   </div>
 </header>
 <section class="pm-top-40">
   <div class="auto w bg-f">
-    <%--<div class="cover"><img src="${pageContext.request.contextPath}/student/images/cover-bc.png"></div>--%>
-    <div class="cover"><img src="${pageContext.request.contextPath}/student/images/cover-bc3.png"></div>
+    <div class="cover"><img src="${pageContext.request.contextPath}/student/images/cover-bc.png"></div>
+    <%--<div class="cover"><img src="${pageContext.request.contextPath}/student/images/cover-bc3.png"></div>--%>
     <dl class="catalog">
       <dt class="line-b1">
       <div class="content"><i class="i-log"></i>${teachPlanSubject.name}</div>

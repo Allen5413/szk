@@ -7,8 +7,8 @@
   <input type="hidden" id="labels" name="labels" />
   <div class="am-g am-margin-top">
     <div class="am-u-sm-3 am-text-right"><label >题目：</label></div>
-    <div class="am-u-sm-4">
-      <input class="am-input-sm" type="text" placeholder="输入题目" required id="add_name" name="name"  />
+    <div class="am-u-sm-8">
+      <textarea rows="4" placeholder="输入题目" id="add_name" name="name"></textarea>
     </div>
     <div class="am-u-sm-5">*必填，不可重复</div>
   </div>
